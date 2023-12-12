@@ -65,10 +65,10 @@ const Item = () => {
   };
 
   return (
-    <main className="flex justify-center min-h-screen px-2 py-4 sm:p-2 sm: ">
+    <section className="flex justify-center w-full min-h-screen px-2 py-4 sm:p-2 sm: ">
       {itemData ? (
         <div className="flex flex-col p-6 m-auto bg-black/25 backdrop-blur-sm">
-          <div className="carousel max-w-[550px] h-auto">
+          <div className="carousel max-w-[550px] w-full h-auto">
             {itemData.media.map((imageUrl, index) => (
               <div
                 key={index}
@@ -168,7 +168,8 @@ const Item = () => {
                   />
                 </button>
               )}
-              <div className="absolute w-full top-[-800px]">
+              <div className="relative">
+              <div className="fixed bottom-0 right-0 w-full">
                 {itemData.seller.name === localStorage.getItem("user_name") && (
                   <UpdatePost
                     isOpen={isPostModalOpen}
@@ -177,13 +178,14 @@ const Item = () => {
                   />
                 )}
               </div>
+              </div>
             </div>
           </div>
         </div>
       ) : (
         <p>Loading...</p>
       )}
-    </main>
+    </section>
   );
 };
 

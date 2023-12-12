@@ -174,7 +174,7 @@ export default function UpdatePost({ isOpen, toggleModal, onSuccess }) {
         <form
           onSubmit={handlePostListing}
           action=" "
-          className="flex justify-center bg-black/[99%] w-full md:max-w-[600px] max-w-[95%] m-auto rounded-sm relative"
+          className="flex justify-center bg-black/[99%] w-full md:max-w-[600px] m-auto rounded-sm relative"
         >
           <button
             className="absolute text-white right-6 top-6"

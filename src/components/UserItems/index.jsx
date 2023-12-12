@@ -11,6 +11,7 @@ const UserItems = () => {
   const [sortOption, setSortOption] = useState("created-desc");
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
   const [isSortModalOpen, setIsSortModalOpen] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const [userProfile, setUserProfile] = useState({});
   const defaultAvatar = "/defaultprofilepic.png";
   const defaultImg = "/default-placeholder.png";
@@ -47,6 +48,7 @@ const UserItems = () => {
           const userProfileData = await profileResponse.json();
           setUserProfile(userProfileData);
         }
+        setImagesLoaded(true);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -149,7 +151,7 @@ const UserItems = () => {
                 </span>
                 <img
                   src={plussIcon}
-                  alt=""
+                  alt="icon of a plus sign"
                   className="sm:w-3.5 w-2.5 my-auto object-cover"
                 />
               </button>
@@ -177,7 +179,7 @@ const UserItems = () => {
               </div>
 
               <div className="flex py-1.5 px-3 text-white bg-black/40 rounded-sm ">
-                <img src={CoinIcon} alt="" className="w-4 h-4 my-auto mr-2" />
+                <img src={CoinIcon} alt="icon of a coin" className="w-4 h-4 my-auto mr-2" />
                 <p className="my-auto text-sm tracking-wide truncate sm:text-base">
                   {userProfile.credits}
                 </p>
@@ -221,7 +223,10 @@ const UserItems = () => {
                 <img
                   src={item.media[0] || defaultImg}
                   alt={item.title}
-                  className="object-cover w-full mb-2 h-[150px]"
+                  loading="lazy"
+                  className={`object-cover w-full mb-2 h-[150px] ${
+                    imagesLoaded ? '' : 'animate-pulse bg-gray-900'
+                  }`}
                 />
               </div>
 

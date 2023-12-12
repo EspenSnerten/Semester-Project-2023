@@ -12,6 +12,7 @@ const AuctionList = () => {
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
   const [isSortModalOpen, setIsSortModalOpen] = useState(false);
   const [userProfile, setUserProfile] = useState({});
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const defaultAvatar = "/defaultprofilepic.png";
   const defaultImg = "/default-placeholder.png";
   const plussIcon = "/Pluss-icon.png";
@@ -47,6 +48,7 @@ const AuctionList = () => {
           const userProfileData = await profileResponse.json();
           setUserProfile(userProfileData);
         }
+        setImagesLoaded(true);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -143,7 +145,9 @@ const AuctionList = () => {
                 <img
                   src={userProfile.avatar || defaultAvatar}
                   alt={`${userProfile.name}'s profile picture`}
-                  className="object-cover w-5 h-5 my-auto mr-2 rounded-full sm:w-6 sm:h-6"
+                  className={`object-cover w-5 h-5 my-auto mr-2 rounded-full sm:w-6 sm:h-6 ${
+                    imagesLoaded ? '' : 'animate-pulse bg-gray-900'
+                  }`}
                 />
                 <p className="text-sm tracking-wide truncate sm:text-base">
                   {userProfile.name}
@@ -169,7 +173,7 @@ const AuctionList = () => {
               </span>{" "}
               <img
                 src={ArrowIcon}
-                alt=""
+                alt="icon of an arrow"
                 className=" my-auto rotate-[270deg] w-2"
               />
             </button>
@@ -195,7 +199,10 @@ const AuctionList = () => {
               <img
                 src={item.media[0] || defaultImg}
                 alt={item.title}
-                className="object-cover w-full mb-2 h-[150px]"
+                loading="lazy"
+                className={`object-cover w-full mb-2 h-[150px] ${
+                  imagesLoaded ? '' : 'animate-pulse bg-gray-900'
+                }`}
               />
             </div>
 

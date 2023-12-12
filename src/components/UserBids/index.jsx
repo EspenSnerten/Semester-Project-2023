@@ -11,6 +11,7 @@ const UserBids = () => {
   const [sortOption, setSortOption] = useState("created-desc");
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
   const [isSortModalOpen, setIsSortModalOpen] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const [userProfile, setUserProfile] = useState({});
   const user_name = localStorage.getItem("user_name");
   const token = localStorage.getItem("accessToken");
@@ -60,6 +61,7 @@ const UserBids = () => {
           const userProfileData = await profileResponse.json();
           setUserProfile(userProfileData);
         }
+        setImagesLoaded(true);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -141,7 +143,7 @@ const UserBids = () => {
                 </span>
                 <img
                   src={plussIcon}
-                  alt=""
+                  alt="icon of a plus sign"
                   className="sm:w-3.5 w-2.5 my-auto object-cover"
                 />
               </button>
@@ -187,7 +189,7 @@ const UserBids = () => {
               </span>{" "}
               <img
                 src={ArrowIcon}
-                alt=""
+                alt="icon of an arrow"
                 className=" my-auto rotate-[270deg] w-2"
               />
             </button>
@@ -213,7 +215,10 @@ const UserBids = () => {
               <img
                 src={listing.media[0] || defaultImg}
                 alt={listing.title}
-                className="object-cover w-full mb-2 h-[150px]"
+                loading="lazy"
+                className={`object-cover w-full mb-2 h-[150px] ${
+                  imagesLoaded ? '' : 'animate-pulse bg-gray-900'
+                }`}
               />
             </div>
 
