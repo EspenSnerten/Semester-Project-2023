@@ -22,18 +22,21 @@ const UserItems = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const userName = localStorage.getItem("user_name");
+        const token = localStorage.getItem("accessToken");
         const response = await axios.get(
-          "https://api.noroff.dev/api/v1/auction/listings?_bids=true&_seller=true&sort=created&sortOrder=desc"
+          `https://api.noroff.dev/api/v1/auction/profiles/${userName}/listings?_bids=true&_seller=true&sort=created&sortOrder=desc`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         setListings(response.data);
 
-        // Fetch user profile only if accessToken is present
-        const user_name = localStorage.getItem("user_name");
-        const token = localStorage.getItem("accessToken");
-
         if (token) {
           const profileResponse = await fetch(
-            `https://api.noroff.dev/api/v1/auction/profiles/${user_name}`,
+            `https://api.noroff.dev/api/v1/auction/profiles/${userName}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -122,10 +125,8 @@ const UserItems = () => {
     }
   };
 
-  const filteredListings = listings.filter(
-    (item) =>
-      item.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      item.seller.name === localStorage.getItem("user_name")
+  const filteredListings = listings.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -140,7 +141,7 @@ const UserItems = () => {
           localStorage.getItem("user_name") ? (
             <div className="flex">
               <button
-                className="flex px-3 text-white rounded-sm bg-black/40"
+                className="flex px-3 text-white transition-all duration-200 ease-in rounded-sm bg-black/40 hover:bg-blue-500"
                 onClick={togglePostModal}
               >
                 <span className="hidden my-auto mr-2 text-sm tracking-wide md:flex sm:text-base">
@@ -186,7 +187,7 @@ const UserItems = () => {
 
           <div className="relative flex flex-col">
             <button
-              className="flex px-3 py-1.5 my-auto tracking-wide text-white bg-black/40 text-sm sm:text-base"
+              className="flex px-3 py-1.5 my-auto tracking-wide text-white bg-black/40 text-sm sm:text-base transition-all duration-200 ease-in hover:bg-black"
               onClick={toggleSortModal}
             >
               <span className="flex gap-2 my-auto mr-2">
@@ -213,7 +214,7 @@ const UserItems = () => {
         {filteredListings.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col w-[250px] bg-black/20 m-2 backdrop-blur-sm"
+            className="flex flex-col md:w-[250px] w-full max-w-[340px] bg-black/20 m-2 backdrop-blur-sm hover:scale-105 transition-all duration-200 ease-in"
           >
             <Link to={`/item/${item.id}`} className="flex flex-col">
               <div>
@@ -279,7 +280,7 @@ const UserItems = () => {
             </Link>
             <div className="px-3 mb-3">
               <button
-                className="flex px-2 py-1 text-sm text-white transition-all ease-in-out bg-black hover:bg-red-800 "
+                className="flex px-2 py-1 text-sm tracking-wide text-white transition-all ease-in-out bg-black hover:bg-red-800 "
                 onClick={() => handleDeleteListing(item.id)}
               >
                 Delete Listing{" "}

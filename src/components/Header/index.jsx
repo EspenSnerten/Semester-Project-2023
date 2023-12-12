@@ -100,7 +100,7 @@ export default function Header() {
         </div>
       </nav>
       <div
-        className={`absolute z-10 w-full py-5 text-center bg-gradient-to-r from-black via-slate-900 to-indigo-900 md:hidden border-b-blue-500 mt-2 transition-all duration-300 ${
+        className={`absolute z-10 w-full py-5 text-center bg-gradient-to-r from-black via-slate-900 to-black md:hidden border-b-blue-500 mt-2 transition-all duration-300 ${
           isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >

@@ -12,6 +12,10 @@ const Item = () => {
   const timeIcon = "/Time-icon.png";
   const SettingIcon = "/Settings.png";
 
+  const handleUpdatePostSuccess = () => {
+    window.location.reload();
+  };
+
   useEffect(() => {
     const fetchItemData = async () => {
       try {
@@ -169,6 +173,7 @@ const Item = () => {
                   <UpdatePost
                     isOpen={isPostModalOpen}
                     toggleModal={toggleUpdateModal}
+                    onSuccess={handleUpdatePostSuccess}
                   />
                 )}
               </div>

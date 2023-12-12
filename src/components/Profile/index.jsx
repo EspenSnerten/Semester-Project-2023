@@ -4,11 +4,13 @@ function Profile() {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
-  const [newAvatarUrl, setNewAvatarUrl] = useState(""); // State to hold the new avatar URL
+  const [newAvatarUrl, setNewAvatarUrl] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false); // New state for success message
 
   const defaultAvatar = "/defaultprofilepic.png";
   const coinIcon = "/Coin-icon.png";
   const Settings = "/Settings.png";
+  const SuccessIcon = "/Success-icon.png";
   const user_name = localStorage.getItem("user_name");
   const token = localStorage.getItem("accessToken");
 
@@ -51,7 +53,7 @@ function Profile() {
   }, []);
 
   const handleUpdateAvatar = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault();
 
     try {
       const response = await fetch(
@@ -69,15 +71,22 @@ function Profile() {
       );
 
       if (response.status === 200) {
-        // Update the profile state with the new data
         const responseData = await response.json();
         setProfile(responseData);
+        showSuccessMessage();
       } else {
         console.error("Failed to update avatar:", response.statusText);
       }
     } catch (error) {
       console.error("Error updating avatar:", error);
     }
+  };
+
+  const showSuccessMessage = () => {
+    setShowSuccess(true);
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 1500);
   };
 
   const toggleFormModal = () => {
@@ -88,7 +97,10 @@ function Profile() {
     <main className="flex flex-col items-center justify-center min-h-screen p-2 mx-auto max-w-7xl">
       {isFormModalOpen && (
         <div className="absolute z-10 m-auto bg-black px-9 py-9">
-          <form onSubmit={handleUpdateAvatar} className="flex flex-col gap-4">
+          <form
+            onSubmit={handleUpdateAvatar}
+            className="relative flex flex-col gap-4"
+          >
             <div className="flex flex-row justify-end mb-1">
               <button className="text-white " onClick={toggleFormModal}>
                 <svg
@@ -110,6 +122,7 @@ function Profile() {
             <input
               type="text"
               placeholder="New profile Avatar URL.."
+              required
               value={newAvatarUrl}
               onChange={(e) => setNewAvatarUrl(e.target.value)}
               className="w-[320px] block  px-4 py-1.5 text-white bg-neutral-900 border-gray-800 rounded-sm focus:border-gray-800 focus:ring-gray-800 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -118,8 +131,23 @@ function Profile() {
               type="submit"
               className="px-3 py-1 mx-auto text-white transition-all duration-300 bg-blue-600 rounded-sm hover:scale-105"
             >
-              Update Avatar
+              {loading ? (
+                <>
+                  <span className="my-auto mr-2 loading loading-spinner loading-xs"></span>
+                  Updating Avatar...
+                </>
+              ) : (
+                "Update Avatar "
+              )}
             </button>
+            {showSuccess && (
+              <div className="absolute w-full h-full bg-black">
+                <div className="flex flex-col justify-center w-full h-full gap-2">
+                  <img src={SuccessIcon} alt="" className="w-12 mx-auto" />
+                  <p className="mx-auto text-white">Update Successful</p>
+                </div>
+              </div>
+            )}
           </form>
         </div>
       )}
@@ -175,7 +203,7 @@ function Profile() {
           </div>
         </div>
       ) : (
-        <p className="text-white">You need to log in to view this profile</p>
+        <p className="text-white">You need to be logged in to view your profile</p>
       )}
     </main>
   );
