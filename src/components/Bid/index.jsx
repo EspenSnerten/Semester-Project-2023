@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const Bid = () => {
   const listingId = window.location.pathname.split("/").pop();
   const [bidAmount, setBidAmount] = useState("");
+  const [bidStatus, setBidStatus] = useState(""); // Added bidStatus state
   const token = localStorage.getItem("accessToken");
 
   const handleBidSubmit = async (e) => {
@@ -10,7 +11,7 @@ const Bid = () => {
 
     // Make sure bidAmount is a valid number
     if (isNaN(bidAmount) || bidAmount <= 0) {
-      alert("Please enter a valid bid amount.");
+      setBidStatus("Please enter a valid bid amount");
       return;
     }
 
@@ -30,11 +31,10 @@ const Bid = () => {
       );
 
       if (response.ok) {
-        // Bid successfully placed, you can handle the response accordingly
-        console.log("Bid placed successfully");
+        window.location.reload();
       } else {
         // Handle error responses
-        console.error("Failed to place bid");
+        setBidStatus("A higher bid has been placed");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -50,7 +50,6 @@ const Bid = () => {
             placeholder="0,-"
             value={bidAmount}
             onChange={(e) => setBidAmount(e.target.value)}
-            required
             className="block max-w-[120px] w-full px-4 py-1.5 text-white bg-black/40 border-gray-800 rounded-sm focus:border-gray-800 focus:ring-gray-800 focus:outline-none focus:ring focus:ring-opacity-40"
           />
           <button
@@ -60,6 +59,7 @@ const Bid = () => {
             Place Bid
           </button>
         </form>
+        {bidStatus && <p className="mt-2 text-red-500">{bidStatus}</p>}
       </div>
     </>
   );

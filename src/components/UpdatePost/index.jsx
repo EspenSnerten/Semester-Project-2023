@@ -315,7 +315,7 @@ export default function UpdatePost({ isOpen, toggleModal, onSuccess }) {
               >
                 {isLoading ? (
                   <>
-                    <span className="my-auto mr-2 loading loading-spinner loading-xs"></span>
+                    <span className="my-auto mr-2 loading loading-ring loading-sm"></span>
                     Updating ...
                   </>
                 ) : (

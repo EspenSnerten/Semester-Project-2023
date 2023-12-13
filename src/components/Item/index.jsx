@@ -44,10 +44,6 @@ const Item = () => {
     checkTokenAndSeller();
   }, []);
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
-
   const goToPrevSlide = () => {
     setCurrentSlide((prevSlide) =>
       prevSlide === 0 ? itemData.media.length - 1 : prevSlide - 1

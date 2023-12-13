@@ -201,7 +201,7 @@ const AuctionList = () => {
                 alt={item.title}
                 loading="lazy"
                 className={`object-cover w-full mb-2 h-[150px] ${
-                  imagesLoaded ? '' : 'animate-pulse bg-gray-900'
+                  imagesLoaded ? '' : 'skeleton bg-gray-900'
                 }`}
               />
             </div>
