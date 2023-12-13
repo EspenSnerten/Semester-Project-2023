@@ -217,7 +217,7 @@ const UserBids = () => {
                 alt={listing.title}
                 loading="lazy"
                 className={`object-cover w-full mb-2 h-[150px] ${
-                  imagesLoaded ? '' : 'skeleton  bg-gray-900'
+                  imagesLoaded ? "" : "animate-pulse  bg-gray-900"
                 }`}
               />
             </div>

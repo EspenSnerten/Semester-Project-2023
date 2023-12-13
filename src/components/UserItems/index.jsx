@@ -179,7 +179,11 @@ const UserItems = () => {
               </div>
 
               <div className="flex py-1.5 px-3 text-white bg-black/40 rounded-sm ">
-                <img src={CoinIcon} alt="icon of a coin" className="w-4 h-4 my-auto mr-2" />
+                <img
+                  src={CoinIcon}
+                  alt="icon of a coin"
+                  className="w-4 h-4 my-auto mr-2"
+                />
                 <p className="my-auto text-sm tracking-wide truncate sm:text-base">
                   {userProfile.credits}
                 </p>
@@ -225,7 +229,7 @@ const UserItems = () => {
                   alt={item.title}
                   loading="lazy"
                   className={`object-cover w-full mb-2 h-[150px] ${
-                    imagesLoaded ? '' : 'skeleton  bg-gray-900'
+                    imagesLoaded ? "" : "animate-pulse  bg-gray-900"
                   }`}
                 />
               </div>

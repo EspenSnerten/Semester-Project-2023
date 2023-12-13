@@ -146,7 +146,7 @@ const AuctionList = () => {
                   src={userProfile.avatar || defaultAvatar}
                   alt={`${userProfile.name}'s profile picture`}
                   className={`object-cover w-5 h-5 my-auto mr-2 rounded-full sm:w-6 sm:h-6 ${
-                    imagesLoaded ? '' : 'animate-pulse bg-gray-900'
+                    imagesLoaded ? "" : "animate-pulse bg-gray-900"
                   }`}
                 />
                 <p className="text-sm tracking-wide truncate sm:text-base">
@@ -201,7 +201,7 @@ const AuctionList = () => {
                 alt={item.title}
                 loading="lazy"
                 className={`object-cover w-full mb-2 h-[150px] ${
-                  imagesLoaded ? '' : 'skeleton bg-gray-900'
+                  imagesLoaded ? "" : "animate-pulse bg-gray-900"
                 }`}
               />
             </div>
