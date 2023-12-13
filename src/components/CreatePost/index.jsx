@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 export default function CreatePost({ isOpen, toggleModal, onSuccess }) {
-  const imgIcon = "/img-icon.png";
   const plussIcon = "/Pluss-icon.png";
-  const SuccessIcon = "public/Success-icon.png";
-  const BidcoinIcon = "public/BidCoin-icon.png";
+  const SuccessIcon = "/Success-icon.png";
 
   const [urlInputs, setUrlInputs] = useState([""]);
   const [tagInputs, setTagInputs] = useState([""]);
@@ -335,7 +333,7 @@ export default function CreatePost({ isOpen, toggleModal, onSuccess }) {
                 <div className="flex flex-col justify-center h-full gap-4">
                   <img
                     src={SuccessIcon}
-                    alt=""
+                    alt="a success icon"
                     className="w-[100px] h-auto mx-auto"
                   />
                   <p className="mx-auto">Listing Created</p>

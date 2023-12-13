@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 export default function UpdatePost({ isOpen, toggleModal, onSuccess }) {
-  const imgIcon = "/img-icon.png";
   const plussIcon = "/Pluss-icon.png";
   const SuccessIcon = "/Success-icon.png";
 
@@ -262,7 +261,7 @@ export default function UpdatePost({ isOpen, toggleModal, onSuccess }) {
                   >
                     <img
                       src={plussIcon}
-                      alt=""
+                      alt="an icon of a plus sing"
                       className="object-center w-6 h-auto"
                     />
                   </button>
@@ -329,7 +328,7 @@ export default function UpdatePost({ isOpen, toggleModal, onSuccess }) {
                 <div className="flex flex-col justify-center h-full gap-4">
                   <img
                     src={SuccessIcon}
-                    alt=""
+                    alt="a success icon"
                     className="w-[100px] h-auto mx-auto"
                   />
                   <p className="mx-auto">Update Successful</p>
