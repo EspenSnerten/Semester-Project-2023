@@ -76,7 +76,6 @@ export default function UpdatePost({ isOpen, toggleModal, onSuccess }) {
     try {
       setIsLoading(true);
 
-      // Validation checks
       if (!auctionTitle.trim()) {
         setTitleError("Title is required");
         return;
@@ -166,7 +165,7 @@ export default function UpdatePost({ isOpen, toggleModal, onSuccess }) {
       setIsLoading(false);
     }
   };
-  
+
   return (
     <>
       {isOpen && (
@@ -237,7 +236,9 @@ export default function UpdatePost({ isOpen, toggleModal, onSuccess }) {
                     />
                   </button>
                   {urlErrors[index] && (
-                    <small className="ml-2 text-red-600">{urlErrors[index]}</small>
+                    <small className="ml-2 text-red-600">
+                      {urlErrors[index]}
+                    </small>
                   )}
                 </div>
               ))}
@@ -266,7 +267,9 @@ export default function UpdatePost({ isOpen, toggleModal, onSuccess }) {
                     />
                   </button>
                   {tagErrors[index] && (
-                    <small className="ml-2 text-red-600">{tagErrors[index]}</small>
+                    <small className="ml-2 text-red-600">
+                      {tagErrors[index]}
+                    </small>
                   )}
                 </div>
               ))}
@@ -301,7 +304,9 @@ export default function UpdatePost({ isOpen, toggleModal, onSuccess }) {
                 className="tracking-wide text-white bg-black border-zinc-900 border-2 w-[180px] px-2 py-1.5 focus:border-gray-800 focus:ring-gray-800 focus:outline-none focus:ring focus:ring-opacity-40"
               />
               {auctionEndError && (
-                <small className="mt-1 ml-1 text-red-600">{auctionEndError}</small>
+                <small className="mt-1 ml-1 text-red-600">
+                  {auctionEndError}
+                </small>
               )}
             </div>
 

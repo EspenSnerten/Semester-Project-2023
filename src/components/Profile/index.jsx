@@ -203,7 +203,9 @@ function Profile() {
           </div>
         </div>
       ) : (
-        <p className="text-white">You need to be logged in to view your profile</p>
+        <p className="text-white">
+          You need to be logged in to view your profile
+        </p>
       )}
     </main>
   );

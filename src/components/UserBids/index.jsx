@@ -34,13 +34,11 @@ const UserBids = () => {
           }
         );
 
-        // Ensure that response.data is an array before attempting to map
         const isArrayResponse = Array.isArray(response.data);
 
         if (isArrayResponse) {
-          // Extracting the listings from the response, considering the new structure
           const extractedListings = response.data
-            .filter((item) => item.listing) // Only consider items with a listing property
+            .filter((item) => item.listing)
             .map((item) => item.listing);
 
           setListings(extractedListings);
@@ -77,7 +75,6 @@ const UserBids = () => {
   const handleSortChange = (newSortOption) => {
     setSortOption(newSortOption);
 
-    // Sorting logic
     let sortedListingsCopy = [...listings];
 
     switch (newSortOption) {
@@ -114,7 +111,6 @@ const UserBids = () => {
     setIsSortModalOpen(!isSortModalOpen);
   };
 
-  // Combined filtering and sorting logic
   const filteredListings =
     listings &&
     listings.filter(

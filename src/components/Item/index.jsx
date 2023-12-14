@@ -165,15 +165,16 @@ const Item = () => {
                 </button>
               )}
               <div className="relative">
-              <div className="fixed bottom-0 right-0 w-full">
-                {itemData.seller.name === localStorage.getItem("user_name") && (
-                  <UpdatePost
-                    isOpen={isPostModalOpen}
-                    toggleModal={toggleUpdateModal}
-                    onSuccess={handleUpdatePostSuccess}
-                  />
-                )}
-              </div>
+                <div className="fixed bottom-0 right-0 w-full">
+                  {itemData.seller.name ===
+                    localStorage.getItem("user_name") && (
+                    <UpdatePost
+                      isOpen={isPostModalOpen}
+                      toggleModal={toggleUpdateModal}
+                      onSuccess={handleUpdatePostSuccess}
+                    />
+                  )}
+                </div>
               </div>
             </div>
           </div>

@@ -64,7 +64,6 @@ const UserItems = () => {
   const handleSortChange = (newSortOption) => {
     setSortOption(newSortOption);
 
-    // Sorting logic
     let sortedListingsCopy = [...listings];
 
     switch (newSortOption) {

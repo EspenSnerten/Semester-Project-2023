@@ -76,7 +76,6 @@ export default function CreatePost({ isOpen, toggleModal, onSuccess }) {
     try {
       setIsLoading(true);
 
-      // Validation checks
       if (!auctionTitle.trim()) {
         setTitleError("Title is required");
         return;

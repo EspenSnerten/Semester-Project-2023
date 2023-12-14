@@ -8,7 +8,6 @@ import MarketPage from "./pages/Market";
 import ItemPage from "./pages/Item";
 import Root from "./App";
 
-// Create a new QueryClient instance
 const queryClient = new QueryClient();
 
 const rootRoute = new RootRoute({
@@ -19,7 +18,6 @@ const rootRoute = new RootRoute({
   ),
 });
 
-// Rest of your route setup remains unchanged
 const indexRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/",

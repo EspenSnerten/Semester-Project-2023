@@ -32,25 +32,37 @@ export default function Header() {
               <div className="flex md:justify-end justify-center md:w-full w-[100%] min-w-[50px] my-auto ">
                 <div className=" h-0.5 m-auto md:mx-6 mx-4 flex md:w-full w-[100%] bg-white"></div>
                 <div className="hidden md:flex">
-                  <Link to="/" className="pr-4 text-xl text-white">
+                  <Link
+                    to="/"
+                    className="pr-6 text-xl text-white transition-all ease-in-out hover:translate-y-2"
+                  >
                     Home
                   </Link>
-                  <Link to="/market" className="pr-4 text-xl text-white">
+                  <Link
+                    to="/market"
+                    className="pr-6 text-xl text-white transition-all ease-in-out hover:translate-y-2"
+                  >
                     Market
                   </Link>
-                  <Link to="/profile" className="pr-4 text-xl text-white">
+                  <Link
+                    to="/profile"
+                    className="pr-6 text-xl text-white transition-all ease-in-out hover:translate-y-2"
+                  >
                     Profile
                   </Link>
                   {accessToken ? (
                     <Link
                       to="/"
-                      className="text-xl text-white"
+                      className="pr-6 text-xl text-white transition-all ease-in-out hover:translate-y-2"
                       onClick={handleLogout}
                     >
                       Logout
                     </Link>
                   ) : (
-                    <Link to="/login" className="text-xl text-white">
+                    <Link
+                      to="/login"
+                      className="pr-6 text-xl text-white transition-all ease-in-out hover:translate-y-2"
+                    >
                       Login
                     </Link>
                   )}

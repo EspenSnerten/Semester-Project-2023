@@ -9,7 +9,6 @@ const Bid = () => {
   const handleBidSubmit = async (e) => {
     e.preventDefault();
 
-    // Make sure bidAmount is a valid number
     if (isNaN(bidAmount) || bidAmount <= 0) {
       setBidStatus("Please enter a valid bid amount");
       return;
@@ -25,7 +24,7 @@ const Bid = () => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            amount: parseFloat(bidAmount), // Convert bidAmount to a floating-point number
+            amount: parseFloat(bidAmount),
           }),
         }
       );
@@ -33,7 +32,6 @@ const Bid = () => {
       if (response.ok) {
         window.location.reload();
       } else {
-        // Handle error responses
         setBidStatus("A higher bid has been placed");
       }
     } catch (error) {
