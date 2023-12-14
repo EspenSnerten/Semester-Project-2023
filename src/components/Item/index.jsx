@@ -76,13 +76,13 @@ const Item = () => {
                 <div className="absolute left-0 right-0 flex justify-between transform -translate-y-1/2 top-1/2">
                   <button
                     onClick={() => goToPrevSlide()}
-                    className="px-4 py-3 border-none rounded-r-lg text-white/100 bg-black/20"
+                    className="px-4 py-3 transition-all duration-200 ease-in-out border-none rounded-r-lg text-white/100 bg-black/20 hover:bg-blue-500"
                   >
                     ❮
                   </button>
                   <button
                     onClick={() => goToNextSlide()}
-                    className="px-4 py-3 border-none rounded-l-lg bg-black/20 text-white/100"
+                    className="px-4 py-3 transition-all duration-200 ease-in-out border-none rounded-l-lg bg-black/20 text-white/100 hover:bg-blue-500"
                   >
                     ❯
                   </button>

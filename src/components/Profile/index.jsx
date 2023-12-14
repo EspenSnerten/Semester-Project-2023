@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "@tanstack/react-router";
+
 
 function Profile() {
   const [profile, setProfile] = useState(null);
@@ -203,9 +205,36 @@ function Profile() {
           </div>
         </div>
       ) : (
-        <p className="text-white">
-          You need to be logged in to view your profile
-        </p>
+        <div className="text-white w-[95%] flex flex-col justify-center">
+          <h2 className="mx-auto mb-3 text-base tracking-wider text-center text-white">
+          You need to login to view your profile
+          </h2>
+          <Link
+            to="/login"
+            className="relative inline-flex items-center justify-center py-1.5 m-auto mx-auto overflow-hidden text-base font-medium text-white transition duration-300 ease-out bg-black rounded-sm shadow-md md:text-base px-4 group tracking-wider"
+          >
+            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-blue-500 group-hover:translate-x-0 ease">
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                ></path>
+              </svg>
+            </span>
+            <span className="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">
+              Login
+            </span>
+            <span className="relative invisible">Button Text</span>
+          </Link>
+        </div>
       )}
     </main>
   );

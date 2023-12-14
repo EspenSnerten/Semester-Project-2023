@@ -226,7 +226,7 @@ export default function CreatePost({ isOpen, toggleModal, onSuccess }) {
                     type="button"
                     name="add-new-URL"
                     onClick={addNewUrlInput}
-                    className="px-2 bg-black border-2 rounded-sm border-zinc-900"
+                    className="px-2 transition-all duration-200 ease-in-out bg-black border-2 rounded-sm border-zinc-900 hover:bg-blue-500"
                   >
                     <img
                       src={plussIcon}
@@ -257,7 +257,7 @@ export default function CreatePost({ isOpen, toggleModal, onSuccess }) {
                     type="button"
                     name="add-new-tag"
                     onClick={addNewTagInput}
-                    className="px-2 bg-black border-2 rounded-sm border-zinc-900"
+                    className="px-2 transition-all duration-200 ease-in-out bg-black border-2 rounded-sm border-zinc-900 hover:bg-blue-500"
                   >
                     <img
                       src={plussIcon}

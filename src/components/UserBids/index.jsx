@@ -177,7 +177,7 @@ const UserBids = () => {
 
           <div className="relative flex flex-col">
             <button
-              className="flex px-3 py-1.5 my-auto tracking-wide text-white bg-black/40 text-sm sm:text-base transition-all duration-200 ease-in hover:bg-black"
+              className="flex px-3 py-1.5 my-auto tracking-wide text-white bg-black/40 text-sm sm:text-base transition-all duration-200 ease-in hover:bg-blue-500 rounded-sm"
               onClick={toggleSortModal}
             >
               <span className="flex gap-2 my-auto mr-2">
