@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
 
-
 function Profile() {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -207,7 +206,7 @@ function Profile() {
       ) : (
         <div className="text-white w-[95%] flex flex-col justify-center">
           <h2 className="mx-auto mb-3 text-base tracking-wider text-center text-white">
-          You need to login to view your profile
+            You need to login to view your profile
           </h2>
           <Link
             to="/login"
