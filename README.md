@@ -2,7 +2,7 @@
 
 ![image](/public/BidCoin.png)
 
-- live link [-]
+- live link [https://main--bidcoin-noroff.netlify.app/]
 
 This was my second year Christmas semester assignment, the task was to build a web application that demonstrates CRUD capabilities using an API that was provided for us.
 
